@@ -14,4 +14,4 @@ sudo npm install -g vite
 npm install @sveltejs/kit
 ```
 ## Run 
-To deploy this starter on nuv, simply ```task devel```
+To deploy this starter on nuv, simply ```task build```

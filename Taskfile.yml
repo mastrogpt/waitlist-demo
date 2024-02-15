@@ -162,6 +162,6 @@ tasks:
     build_web:
       desc: execute npm run build and extract data to web folder
       cmds:
-        - cd ./svelte-waitlist && npm run build && cp -r build/* ../web/
+        - cd ./svelte-waitlist && npm install && npm run build && cp -r build/* ../web/
         - nuv web upload web
         - echo "Deployed on:" "$NUVDEV_HOST"

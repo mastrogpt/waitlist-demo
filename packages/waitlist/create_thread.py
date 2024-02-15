@@ -12,7 +12,7 @@ def main(args):
         return {
             'body': {
             'output': "ok",
-            'state': empty_thread.id
+            'id': empty_thread.id
             }
         }
 

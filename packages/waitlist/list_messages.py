@@ -10,16 +10,12 @@ def main(args):
         api_key=args.get('API_KEY_ASSISTANT_API')
     )
 
-    res = list_last_assistant_thread_messages(args.get('state'), openai)
+    res = list_last_assistant_thread_messages(args.get('threadId'), openai)
 
     return {
-            'body': {
-            'output': res[0].text.value,
-            'state': args.get('state')
-            }
+            'body': res[0].text.value,
     }
-   
-
+    
 
 def list_last_assistant_thread_messages(thread_id, openai, max_attempts=5):
     try:

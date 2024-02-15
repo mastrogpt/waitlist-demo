@@ -2,11 +2,8 @@ import requests
 import json
 
 def main(args):
-    try:
-        state = (args['state'])
-    except:
-        state = ''
-    input = args.get('input', '')
+    
+    input = args.get('text', '')
 
     url = args.get('SLACK_URL')
     headers = {'Content-type': 'application/json'}
@@ -16,14 +13,13 @@ def main(args):
     if response.status_code == 200:
         return {
             'body': {
-            'output': 'ok',
-            'state': state
-            }
+            'output': 'ok'            }
         }
     else:
+        print('slack url is ', args.get('SLACK_URL'))
+        print(response)
         return {
             'body': {
-            'output': 'ko',
-            'state': state
+            'output': 'ko'            
             }
         }
