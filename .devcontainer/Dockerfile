@@ -1,4 +1,5 @@
 FROM ubuntu:22.04
+
 RUN \
     echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selections
 RUN \ 
@@ -8,14 +9,15 @@ RUN \
     apt-get update &&\
     apt-get -y install \
     software-properties-common apt-utils \
-    curl wget gpg zip unzip  unzip vim silversearcher-ag \
+    curl wget gpg zip unzip unzip vim silversearcher-ag \
     sudo socat telnet inetutils-ping \
     lsb-release ca-certificates locales \
     apt-transport-https build-essential gettext-base \
     git gnupg curl wget jq kafkacat \
     zlib1g-dev libbz2-dev libncurses5-dev \
     libgdbm-dev libnss3-dev libssl-dev \
-    libreadline-dev libffi-dev libsqlite3-dev liblzma-dev
+    libreadline-dev libffi-dev libsqlite3-dev liblzma-dev \
+    nodejs npm
 RUN \
     echo "en_US.UTF-8 UTF-8" >>/etc/locale.gen  && locale-gen
 ENV LANG=en_US.UTF-8
@@ -46,3 +48,9 @@ ADD init.sh /usr/sbin/init.sh
 RUN /bin/bash -c 'source /home/nuvolaris/.bashrc'
 # proxy to docker and keep alive
 ENTRYPOINT ["/bin/bash", "/usr/sbin/init.sh"]
+
+RUN sudo apt update && \
+    sudo apt install -y nodejs npm && \
+    sudo npm install -g npm@latest && \
+    sudo npm install -g vite && \
+    npm install @sveltejs/kit
