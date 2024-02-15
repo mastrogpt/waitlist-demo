@@ -1,0 +1,22 @@
+#bad to be removed use manifest.yml
+packages:
+  waitlist:
+    inputs:
+      OPENAI_API_KEY: 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
+      API_KEY_ASSISTANT_API: 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
+      ORGANIZATION: org-ZmZepTrcIzLi3cpzcue5SCkV
+      ASSISTANT_AI_ID: asst_Dlp2BJzOZJ35nM2ZGlzJlDMp
+      SLACK_URL: https://hooks.slack.com/services/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
+    actions:
+      create-thread:
+        function: waitlist/create_thread.py
+        web: true
+      send_message:
+        function: waitlist/send_message.py
+        web: true
+      list_messages:
+        function: waitlist/list_messages.py
+        web: true
+      notify:
+        function: waitlist/notify.py
+        web: true
